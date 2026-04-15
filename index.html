@@ -14,36 +14,16 @@ body{
 }
 
 header{
-  background:white;
+  background:black;
   text-align:center;
   padding:18px;
   font-size:24px;
   font-weight:bold;
-  color:white;
+  color:red;
   border-bottom:2px solid red;
 }
 
-/* SEARCH */
-.search-box{
-  text-align:center;
-  padding:10px;
-}
-
-.search-box input{
-  width:80%;
-  padding:10px;
-  border-radius:20px;
-  border:none;
-  text-align:center;
-}
-
-/* CART */
-.cart{
-  text-align:center;
-  padding:10px;
-  color:white;
-}
-
+/* GRID */
 .grid{
   display:flex;
   flex-wrap:wrap;
@@ -63,7 +43,7 @@ header{
 
 .card img{
   width:100%;
-  height:140px;
+  height:130px;
   object-fit:cover;
   border-radius:10px;
 }
@@ -73,24 +53,14 @@ header{
   font-weight:bold;
 }
 
-.btn{
-  display:block;
-  margin-top:8px;
-  padding:8px;
-  background:white;
-  color:white;
-  border-radius:20px;
-  text-decoration:none;
-  cursor:pointer;
-}
-
-/* CHECKOUT */
-.checkout{
+/* ADMIN */
+.admin{
   text-align:center;
   padding:15px;
+  border-top:2px solid red;
 }
 
-.checkout input, .checkout select{
+.admin input{
   width:80%;
   padding:10px;
   margin:5px;
@@ -98,13 +68,12 @@ header{
   border:none;
 }
 
-.checkout button{
-  padding:12px 20px;
+.admin button{
+  padding:10px 15px;
   background:red;
   color:white;
   border:none;
   border-radius:20px;
-  font-weight:bold;
   cursor:pointer;
 }
 
@@ -115,7 +84,7 @@ header{
   right:20px;
   background:red;
   color:white;
-  padding:14px 16px;
+  padding:14px;
   border-radius:50px;
   text-decoration:none;
 }
@@ -125,98 +94,46 @@ header{
 
 <body>
 
-<header>
-📱 MOBILE ZONE
-</header>
+<header>📱 MOBILE ZONE</header>
 
-<div class="search-box">
-<input type="text" id="search" onkeyup="searchProducts()" placeholder="Search products...">
-</div>
+<div class="grid" id="productList"></div>
 
-<div class="cart">
-🛒 Cart Items: <span id="cartCount">0</span>
-</div>
+<!-- ADMIN PANEL -->
+<div class="admin">
+<h2 style="color:red;">Admin Panel</h2>
 
-<div class="grid" id="productList">
+<input type="text" id="name" placeholder="Product Name">
+<input type="text" id="price" placeholder="Price (R)">
+<input type="text" id="image" placeholder="Image URL">
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500">
-<h3>iPhone 13</h3>
-<p class="price">R 10,500</p>
-<button class="btn" onclick="addToCart('iPhone 13')">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500">
-<h3>Samsung S21</h3>
-<p class="price">R 8,900</p>
-<button class="btn" onclick="addToCart('Samsung S21')">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?w=500">
-<h3>AirPods</h3>
-<p class="price">R 1,200</p>
-<button class="btn" onclick="addToCart('AirPods')">Add to Cart</button>
-</div>
-
-</div>
-
-<!-- CHECKOUT -->
-<div class="checkout">
-<h2 style="color:red;">Checkout</h2>
-
-<input type="text" id="name" placeholder="Full Name">
-<input type="text" id="phone" placeholder="Phone Number">
-<input type="text" id="address" placeholder="Address">
-
-<select id="payment">
-  <option>Cash on Delivery</option>
-  <option>Bank Transfer</option>
-  <option>WhatsApp Confirm Payment</option>
-</select>
-
-<br><br>
-<button onclick="placeOrder()">Place Order</button>
+<br>
+<button onclick="addProduct()">Add Product</button>
 </div>
 
 <a class="whatsapp" href="https://wa.me/26879762802">💬</a>
 
 <script>
 
-let cart = [];
-let cartCount = 0;
+function addProduct(){
 
-function addToCart(product){
-  cart.push(product);
-  cartCount++;
-  document.getElementById("cartCount").innerText = cartCount;
-}
-
-function searchProducts(){
-  let input = document.getElementById("search").value.toLowerCase();
-  let cards = document.getElementsByClassName("card");
-
-  for(let i=0;i<cards.length;i++){
-    let text = cards[i].innerText.toLowerCase();
-    cards[i].style.display = text.includes(input) ? "block" : "none";
-  }
-}
-
-function placeOrder(){
   let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let address = document.getElementById("address").value;
-  let payment = document.getElementById("payment").value;
+  let price = document.getElementById("price").value;
+  let image = document.getElementById("image").value;
 
-  let msg = "🛒 NEW ORDER%0A";
-  msg += "Name: " + name + "%0A";
-  msg += "Phone: " + phone + "%0A";
-  msg += "Address: " + address + "%0A";
-  msg += "Payment: " + payment + "%0A";
-  msg += "Products: " + cart.join(", ");
+  let card = document.createElement("div");
+  card.className = "card";
 
-  window.open("https://wa.me/26879762802?text=" + msg, "_blank");
+  card.innerHTML = `
+    <img src="${image}">
+    <h3>${name}</h3>
+    <p class="price">R ${price}</p>
+  `;
+
+  document.getElementById("productList").appendChild(card);
+
+  document.getElementById("name").value = "";
+  document.getElementById("price").value = "";
+  document.getElementById("image").value = "";
 }
 
 </script>
