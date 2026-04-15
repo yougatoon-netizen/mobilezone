@@ -15,29 +15,39 @@ body{
 
 /* HEADER */
 header{
-  background:white;
+  background:black;
   text-align:center;
   padding:18px;
   font-size:24px;
   font-weight:bold;
-  color:black;
+  color:red;
   border-bottom:2px solid red;
+}
+
+/* SEARCH */
+.search-box{
+  text-align:center;
+  padding:15px;
+}
+
+.search-box input{
+  width:80%;
+  padding:10px;
+  border-radius:20px;
+  border:none;
+  outline:none;
+  text-align:center;
 }
 
 /* HERO */
 .hero{
   text-align:center;
-  padding:30px 15px;
+  padding:20px;
 }
 
 .hero h1{
-  font-size:38px;
-  margin:0;
   color:red;
-}
-
-.hero p{
-  color:#bbb;
+  margin:0;
 }
 
 /* GRID */
@@ -46,7 +56,7 @@ header{
   flex-wrap:wrap;
   justify-content:center;
   gap:15px;
-  padding:15px;
+  padding:10px;
 }
 
 /* CARD */
@@ -56,6 +66,7 @@ header{
   border-radius:15px;
   padding:15px;
   border:1px solid red;
+  text-align:center;
 }
 
 /* IMAGE */
@@ -68,20 +79,17 @@ header{
 .price{
   color:red;
   font-weight:bold;
-  margin:5px 0;
 }
 
 /* BUTTON */
 .btn{
   display:block;
   margin-top:10px;
-  padding:10px;
+  padding:8px;
   background:red;
   color:white;
-  text-align:center;
   border-radius:20px;
   text-decoration:none;
-  font-weight:bold;
 }
 
 /* WHATSAPP */
@@ -94,7 +102,6 @@ header{
   padding:14px 16px;
   border-radius:50px;
   text-decoration:none;
-  font-weight:bold;
 }
 </style>
 
@@ -106,12 +113,16 @@ header{
 📱 MOBILE ZONE
 </header>
 
+<div class="search-box">
+<input type="text" id="search" onkeyup="searchProducts()" placeholder="Search products...">
+</div>
+
 <div class="hero">
 <h1>Welcome</h1>
 <p>Phones • Accessories • Repair</p>
 </div>
 
-<div class="grid">
+<div class="grid" id="productList">
 
 <div class="card">
 <img src="https://via.placeholder.com/150">
@@ -143,9 +154,23 @@ header{
 
 </div>
 
-<a class="whatsapp" href="https://wa.me/26879762802">
-💬
-</a>
+<a class="whatsapp" href="https://wa.me/26879762802">💬</a>
+
+<script>
+function searchProducts() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let cards = document.getElementsByClassName("card");
+
+  for (let i = 0; i < cards.length; i++) {
+    let text = cards[i].innerText.toLowerCase();
+    if (text.includes(input)) {
+      cards[i].style.display = "block";
+    } else {
+      cards[i].style.display = "none";
+    }
+  }
+}
+</script>
 
 </body>
 </html>
