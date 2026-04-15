@@ -3,34 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mobile Zone</title>
+<title>Mobile Zone Shop</title>
+
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:#f5f5f7;
+  color:#1d1d1f;
+}
+
+header{
+  background:#000;
+  color:#fff;
+  text-align:center;
+  padding:18px;
+  font-size:20px;
+  font-weight:600;
+}
+
+.hero{
+  text-align:center;
+  padding:30px 15px;
+}
+
+.hero h1{
+  font-size:34px;
+}
+
+.section{
+  padding:20px;
+  text-align:center;
+}
+
+.grid{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+}
+
+.card{
+  background:#fff;
+  width:160px;
+  border-radius:15px;
+  padding:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.06);
+}
+
+.card img{
+  width:100%;
+  border-radius:10px;
+}
+
+.price{
+  color:green;
+  font-weight:bold;
+  margin-top:5px;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:8px 12px;
+  background:#0071e3;
+  color:#fff;
+  border-radius:20px;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  padding:14px 16px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:bold;
+}
+</style>
+
 </head>
 
-<body style="font-family: Arial; text-align:center; margin:0;">
+<body>
 
-<h1>📱 Mobile Zone</h1>
+<header>
+📱 Mobile Zone Shop
+</header>
 
-<p>Welcome to Mobile Zone</p>
+<div class="hero">
+<h1>Premium Phones & Accessories</h1>
+<p>Manzini, Eswatini 🇸🇿</p>
+</div>
 
-<p>Phones | Accessories | Repair Services</p>
+<div class="section">
+<h2>🔥 Our Products</h2>
 
-<hr>
+<div class="grid">
 
-<h2>Our Services</h2>
-<p>📱 Mobile Sales</p>
-<p>🔋 Battery Replacement</p>
-<p>📲 Screen Repair</p>
+<div class="card">
+<img src="https://via.placeholder.com/150">
+<h4>iPhone 13</h4>
+<div class="price">R 10,500</div>
+<a class="btn" href="https://wa.me/26879762802">Buy on WhatsApp</a>
+</div>
 
-<hr>
+<div class="card">
+<img src="https://via.placeholder.com/150">
+<h4>Samsung S21</h4>
+<div class="price">R 8,900</div>
+<a class="btn" href="https://wa.me/26879762802">Buy on WhatsApp</a>
+</div>
 
-<h2>Contact</h2>
-<p>WhatsApp: +26879762802</p>
-<p>Address: Shop No 2B, Dubai Mall, Manzini, Eswatini 🇸🇿</p>
+<div class="card">
+<img src="https://via.placeholder.com/150">
+<h4>AirPods</h4>
+<div class="price">R 1,200</div>
+<a class="btn" href="https://wa.me/26879762802">Buy on WhatsApp</a>
+</div>
 
-<br>
+<div class="card">
+<img src="https://via.placeholder.com/150">
+<h4>Fast Charger</h4>
+<div class="price">R 250</div>
+<a class="btn" href="https://wa.me/26879762802">Buy on WhatsApp</a>
+</div>
 
-<a href="https://wa.me/26879762802">
-<button style="padding:10px 20px; font-size:16px;">Chat on WhatsApp</button>
+</div>
+</div>
+
+<a class="whatsapp" href="https://wa.me/26879762802">
+💬 Chat
 </a>
 
 </body>
