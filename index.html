@@ -27,7 +27,7 @@ header{
 /* SEARCH */
 .search-box{
   text-align:center;
-  padding:15px;
+  padding:10px;
 }
 
 .search-box input{
@@ -35,19 +35,14 @@ header{
   padding:10px;
   border-radius:20px;
   border:none;
-  outline:none;
   text-align:center;
 }
 
-/* HERO */
-.hero{
+/* CART */
+.cart{
   text-align:center;
-  padding:20px;
-}
-
-.hero h1{
-  color:red;
-  margin:0;
+  padding:10px;
+  color:white;
 }
 
 /* GRID */
@@ -69,27 +64,49 @@ header{
   text-align:center;
 }
 
-/* IMAGE */
 .card img{
   width:100%;
   border-radius:10px;
 }
 
-/* PRICE */
 .price{
   color:red;
   font-weight:bold;
 }
 
-/* BUTTON */
 .btn{
   display:block;
-  margin-top:10px;
+  margin-top:8px;
   padding:8px;
   background:red;
   color:white;
   border-radius:20px;
   text-decoration:none;
+  cursor:pointer;
+}
+
+/* CHECKOUT */
+.checkout{
+  text-align:center;
+  padding:15px;
+}
+
+.checkout input{
+  width:80%;
+  padding:10px;
+  margin:5px;
+  border-radius:10px;
+  border:none;
+}
+
+.checkout button{
+  padding:12px 20px;
+  background:red;
+  color:white;
+  border:none;
+  border-radius:20px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 /* WHATSAPP */
@@ -117,9 +134,8 @@ header{
 <input type="text" id="search" onkeyup="searchProducts()" placeholder="Search products...">
 </div>
 
-<div class="hero">
-<h1>Welcome</h1>
-<p>Phones • Accessories • Repair</p>
+<div class="cart">
+🛒 Cart Items: <span id="cartCount">0</span>
 </div>
 
 <div class="grid" id="productList">
@@ -128,48 +144,81 @@ header{
 <img src="https://via.placeholder.com/150">
 <h3>iPhone 13</h3>
 <p class="price">R 10,500</p>
-<a class="btn" href="https://wa.me/26879762802">Buy</a>
+<button class="btn" onclick="addToCart('iPhone 13')">Add to Cart</button>
 </div>
 
 <div class="card">
 <img src="https://via.placeholder.com/150">
 <h3>Samsung S21</h3>
 <p class="price">R 8,900</p>
-<a class="btn" href="https://wa.me/26879762802">Buy</a>
+<button class="btn" onclick="addToCart('Samsung S21')">Add to Cart</button>
 </div>
 
 <div class="card">
 <img src="https://via.placeholder.com/150">
 <h3>AirPods</h3>
 <p class="price">R 1,200</p>
-<a class="btn" href="https://wa.me/26879762802">Buy</a>
+<button class="btn" onclick="addToCart('AirPods')">Add to Cart</button>
 </div>
 
-<div class="card">
-<img src="https://via.placeholder.com/150">
-<h3>Charger</h3>
-<p class="price">R 250</p>
-<a class="btn" href="https://wa.me/26879762802">Buy</a>
 </div>
 
+<!-- CHECKOUT FORM -->
+<div class="checkout">
+<h2 style="color:red;">Checkout</h2>
+<input type="text" id="name" placeholder="Your Name">
+<input type="text" id="address" placeholder="Your Address">
+<input type="text" id="phone" placeholder="Phone Number">
+<br><br>
+<button onclick="placeOrder()">Place Order on WhatsApp</button>
 </div>
 
 <a class="whatsapp" href="https://wa.me/26879762802">💬</a>
 
 <script>
-function searchProducts() {
+
+let cart = [];
+let cartCount = 0;
+
+// ADD TO CART
+function addToCart(product){
+  cart.push(product);
+  cartCount++;
+  document.getElementById("cartCount").innerText = cartCount;
+}
+
+// SEARCH
+function searchProducts(){
   let input = document.getElementById("search").value.toLowerCase();
   let cards = document.getElementsByClassName("card");
 
-  for (let i = 0; i < cards.length; i++) {
+  for(let i=0;i<cards.length;i++){
     let text = cards[i].innerText.toLowerCase();
-    if (text.includes(input)) {
-      cards[i].style.display = "block";
-    } else {
-      cards[i].style.display = "none";
+    if(text.includes(input)){
+      cards[i].style.display="block";
+    }else{
+      cards[i].style.display="none";
     }
   }
 }
+
+// CHECKOUT
+function placeOrder(){
+  let name = document.getElementById("name").value;
+  let address = document.getElementById("address").value;
+  let phone = document.getElementById("phone").value;
+
+  let message = "New Order:%0A";
+  message += "Name: " + name + "%0A";
+  message += "Address: " + address + "%0A";
+  message += "Phone: " + phone + "%0A";
+  message += "Products: " + cart.join(", ");
+
+  let url = "https://wa.me/26879762802?text=" + message;
+
+  window.open(url, "_blank");
+}
+
 </script>
 
 </body>
