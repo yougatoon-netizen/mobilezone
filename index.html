@@ -44,6 +44,7 @@ header{
   text-align:center;
   background:white;
 }
+
 .search-box input{
   width:90%;
   padding:10px;
@@ -96,13 +97,15 @@ header{
   border-radius:10px;
 }
 
+/* PRICE RED */
 .price{
-  color:#ff6a00;
+  color:red;
   font-weight:bold;
 }
 
+/* BUTTON RED */
 .btn{
-  background:#ff6a00;
+  background:red;
   color:white;
   padding:8px;
   border:none;
@@ -118,6 +121,7 @@ header{
   margin:10px;
   border-radius:10px;
 }
+
 .checkout input, .checkout select{
   width:100%;
   padding:10px;
@@ -125,10 +129,11 @@ header{
   border-radius:8px;
   border:1px solid #ddd;
 }
+
 .checkout button{
   width:100%;
   padding:12px;
-  background:#ff6a00;
+  background:red;
   color:white;
   border:none;
   border-radius:10px;
@@ -152,7 +157,7 @@ header{
 
 <header>
   <div class="header-container">
-    <img src="logo.jpg" alt="Mobile Zone Logo">
+    <img src="logo.jpg" alt="Logo">
     <span>MOBILE ZONE</span>
   </div>
 </header>
@@ -162,10 +167,10 @@ header{
 </div>
 
 <div class="nav">
-<span>iPhone 11</span>
-<span>iPhone 12</span>
-<span>iPhone 13</span>
-<span>iPhone 14+</span>
+<span>iPhone</span>
+<span>Samsung</span>
+<span>Accessories</span>
+<span>Deals</span>
 </div>
 
 <div class="banner">
@@ -196,25 +201,46 @@ header{
 <a class="whatsapp" href="https://wa.me/26879762802">💬</a>
 
 <script>
+
 const products = [
-{name:"iPhone 11", price:4300, img:"https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=500"},
-{name:"iPhone 11 Pro", price:4800, img:"https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=500"},
-{name:"iPhone 11 Pro Max", price:6000, img:"https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=500"},
 
-{name:"iPhone 12", price:5000, img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
-{name:"iPhone 12 Mini", price:4000, img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
-{name:"iPhone 12 Pro", price:7000, img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
-{name:"iPhone 12 Pro Max", price:9000, img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
+  // 📱 iPhone 11
+  {name:"iPhone 11", price:4300, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg"},
+  {name:"iPhone 11 Pro", price:4800, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg"},
+  {name:"iPhone 11 Pro Max", price:6000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro-max-.jpg"},
 
-{name:"iPhone 13", price:7500, img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
-{name:"iPhone 13 Mini", price:7000, img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
-{name:"iPhone 13 Pro", price:10000, img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
-{name:"iPhone 13 Pro Max", price:12000, img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
+  // 📱 iPhone 12
+  {name:"iPhone 12", price:5000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg"},
+  {name:"iPhone 12 Mini", price:4000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg"},
+  {name:"iPhone 12 Pro", price:7000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro.jpg"},
+  {name:"iPhone 12 Pro Max", price:9000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max.jpg"},
 
-{name:"iPhone 14", price:8000, img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"},
-{name:"iPhone 14 Plus", price:9000, img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"},
-{name:"iPhone 14 Pro", price:11000, img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"},
-{name:"iPhone 14 Pro Max", price:13500, img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"}
+  // 📱 iPhone 13
+  {name:"iPhone 13", price:7500, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg"},
+  {name:"iPhone 13 Mini", price:7000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg"},
+  {name:"iPhone 13 Pro", price:10000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg"},
+  {name:"iPhone 13 Pro Max", price:12000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg"},
+
+  // 📱 iPhone 14
+  {name:"iPhone 14", price:8000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg"},
+  {name:"iPhone 14 Plus", price:9000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-plus.jpg"},
+  {name:"iPhone 14 Pro", price:11000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg"},
+  {name:"iPhone 14 Pro Max", price:13500, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max.jpg"},
+
+  // 📱 iPhone 15
+  {name:"iPhone 15", price:23000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg"},
+  {name:"iPhone 15 Pro", price:28000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg"},
+  {name:"iPhone 15 Pro Max", price:30000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg"},
+
+  // 📱 iPhone 16
+  {name:"iPhone 16", price:32000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16.jpg"},
+  {name:"iPhone 16 Pro", price:36000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro.jpg"},
+  {name:"iPhone 16 Pro Max", price:38000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro-max.jpg"},
+
+  // 📱 iPhone 17 (demo)
+  {name:"iPhone 17", price:40000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17.jpg"},
+  {name:"iPhone 17 Pro Max", price:48000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17-pro-max.jpg"}
+
 ];
 
 let cart = [];
@@ -285,10 +311,11 @@ function placeOrder(){
 
   msg += "%0ATotal: R " + total;
 
-  window.open("https://wa.me/26879762802?text=" + msg);
+  window.open("https://wa.me/26879762802?text=" + encodeURIComponent(msg));
 }
 
 renderProducts();
+
 </script>
 
 </body>
