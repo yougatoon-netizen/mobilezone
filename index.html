@@ -19,6 +19,7 @@ header{
   padding:10px;
 }
 
+/* LOGO + TITLE */
 .header-container{
   display:flex;
   align-items:center;
@@ -157,7 +158,8 @@ header{
 
 <header>
   <div class="header-container">
-    <img src="logo.jpg" alt="Logo">
+    <!-- 🔥 LOGO FIX (GitHub file name yahan match kare) -->
+    <img src="logo.png" alt="Logo">
     <span>MOBILE ZONE</span>
   </div>
 </header>
@@ -204,42 +206,23 @@ header{
 
 const products = [
 
-  // 📱 iPhone 11
-  {name:"iPhone 11", price:4300, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg"},
-  {name:"iPhone 11 Pro", price:4800, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg"},
-  {name:"iPhone 11 Pro Max", price:6000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro-max-.jpg"},
+{name:"iPhone 11", price:4300, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg"},
+{name:"iPhone 11 Pro", price:4800, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg"},
+{name:"iPhone 11 Pro Max", price:6000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro-max-.jpg"},
 
-  // 📱 iPhone 12
-  {name:"iPhone 12", price:5000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg"},
-  {name:"iPhone 12 Mini", price:4000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg"},
-  {name:"iPhone 12 Pro", price:7000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro.jpg"},
-  {name:"iPhone 12 Pro Max", price:9000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max.jpg"},
+{name:"iPhone 12", price:5000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg"},
+{name:"iPhone 12 Mini", price:4000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg"},
+{name:"iPhone 12 Pro", price:7000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro.jpg"},
+{name:"iPhone 12 Pro Max", price:9000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max.jpg"},
 
-  // 📱 iPhone 13
-  {name:"iPhone 13", price:7500, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg"},
-  {name:"iPhone 13 Mini", price:7000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg"},
-  {name:"iPhone 13 Pro", price:10000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg"},
-  {name:"iPhone 13 Pro Max", price:12000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg"},
+{name:"iPhone 13", price:7500, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg"},
+{name:"iPhone 13 Mini", price:7000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg"},
+{name:"iPhone 13 Pro", price:10000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg"},
+{name:"iPhone 13 Pro Max", price:12000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg"},
 
-  // 📱 iPhone 14
-  {name:"iPhone 14", price:8000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg"},
-  {name:"iPhone 14 Plus", price:9000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-plus.jpg"},
-  {name:"iPhone 14 Pro", price:11000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg"},
-  {name:"iPhone 14 Pro Max", price:13500, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max.jpg"},
-
-  // 📱 iPhone 15
-  {name:"iPhone 15", price:23000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg"},
-  {name:"iPhone 15 Pro", price:28000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg"},
-  {name:"iPhone 15 Pro Max", price:30000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg"},
-
-  // 📱 iPhone 16
-  {name:"iPhone 16", price:32000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16.jpg"},
-  {name:"iPhone 16 Pro", price:36000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro.jpg"},
-  {name:"iPhone 16 Pro Max", price:38000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro-max.jpg"},
-
-  // 📱 iPhone 17 (demo)
-  {name:"iPhone 17", price:40000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17.jpg"},
-  {name:"iPhone 17 Pro Max", price:48000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17-pro-max.jpg"}
+{name:"iPhone 14", price:8000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg"},
+{name:"iPhone 14 Pro", price:11000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg"},
+{name:"iPhone 14 Pro Max", price:13500, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max.jpg"}
 
 ];
 
