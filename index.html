@@ -16,8 +16,24 @@ body{
 header{
   background:#ff6a00;
   color:white;
-  padding:15px;
-  text-align:center;
+  padding:10px;
+}
+
+.header-container{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+
+.header-container img{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.header-container span{
   font-size:22px;
   font-weight:bold;
 }
@@ -134,7 +150,12 @@ header{
 
 <body>
 
-<header>📱 MOBILE ZONE</header>
+<header>
+  <div class="header-container">
+    <img src="logo.jpg" alt="Mobile Zone Logo">
+    <span>MOBILE ZONE</span>
+  </div>
+</header>
 
 <div class="search-box">
 <input type="text" id="search" onkeyup="searchProducts()" placeholder="Search iPhones...">
@@ -175,37 +196,25 @@ header{
 <a class="whatsapp" href="https://wa.me/26879762802">💬</a>
 
 <script>
-
 const products = [
+{name:"iPhone 11", price:4300, img:"https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=500"},
+{name:"iPhone 11 Pro", price:4800, img:"https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=500"},
+{name:"iPhone 11 Pro Max", price:6000, img:"https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=500"},
 
-  // iPhone 11
-  {name:"iPhone 11", price:4300, img:"https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=500"},
-  {name:"iPhone 11 Pro", price:4800, img:"https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=500"},
-  {name:"iPhone 11 Pro Max", price:6000, img:"https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=500"},
+{name:"iPhone 12", price:5000, img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
+{name:"iPhone 12 Mini", price:4000, img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
+{name:"iPhone 12 Pro", price:7000, img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
+{name:"iPhone 12 Pro Max", price:9000, img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
 
-  // iPhone 12
-  {name:"iPhone 12", price:5000, img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
-  {name:"iPhone 12 Mini", price:4000, img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
-  {name:"iPhone 12 Pro", price:7000, img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
-  {name:"iPhone 12 Pro Max", price:9000, img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
+{name:"iPhone 13", price:7500, img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
+{name:"iPhone 13 Mini", price:7000, img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
+{name:"iPhone 13 Pro", price:10000, img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
+{name:"iPhone 13 Pro Max", price:12000, img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
 
-  // iPhone 13
-  {name:"iPhone 13", price:7500, img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
-  {name:"iPhone 13 Mini", price:7000, img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
-  {name:"iPhone 13 Pro", price:10000, img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
-  {name:"iPhone 13 Pro Max", price:12000, img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
-
-  // iPhone 14
-  {name:"iPhone 14", price:8000, img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"},
-  {name:"iPhone 14 Plus", price:9000, img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"},
-  {name:"iPhone 14 Pro", price:11000, img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"},
-  {name:"iPhone 14 Pro Max", price:13500, img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"},
-
-  // iPhone 15–17 (demo)
-  {name:"iPhone 15", price:23000, img:"https://images.unsplash.com/photo-1695048133142-1a20484c8a1f?w=500"},
-  {name:"iPhone 16 Pro", price:33000, img:"https://images.unsplash.com/photo-1695048133142-1a20484c8a1f?w=500"},
-  {name:"iPhone 17 Pro Max", price:45000, img:"https://images.unsplash.com/photo-1695048133142-1a20484c8a1f?w=500"}
-
+{name:"iPhone 14", price:8000, img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"},
+{name:"iPhone 14 Plus", price:9000, img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"},
+{name:"iPhone 14 Pro", price:11000, img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"},
+{name:"iPhone 14 Pro Max", price:13500, img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"}
 ];
 
 let cart = [];
@@ -280,7 +289,6 @@ function placeOrder(){
 }
 
 renderProducts();
-
 </script>
 
 </body>
