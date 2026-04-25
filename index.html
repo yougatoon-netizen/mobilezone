@@ -1,26 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mobile Zone</title>
+
+<style>
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
   background:#f5f5f5;
-  color:#222;
 }
 
+/* HEADER */
 header{
   background:#ff6a00;
   color:white;
   padding:15px;
+  text-align:center;
   font-size:22px;
   font-weight:bold;
 }
 
+/* SEARCH */
+.search-box{
+  padding:10px;
+  text-align:center;
+  background:white;
+}
+
+.search-box input{
+  width:90%;
+  padding:10px;
+  border-radius:20px;
+  border:1px solid #ddd;
+}
+
+/* NAV */
+.nav{
+  display:flex;
+  justify-content:space-around;
+  background:white;
+  padding:10px;
+  border-bottom:1px solid #ddd;
+  font-size:14px;
+}
+
+/* BANNER */
+.banner img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+/* CATEGORIES */
+.categories{
+  display:flex;
+  justify-content:space-around;
+  padding:15px;
+  background:white;
+}
+
+.categories div{
+  text-align:center;
+  font-size:14px;
+}
+
+/* CART */
+.cart{
+  text-align:center;
+  padding:10px;
+}
+
+/* PRODUCTS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  padding:10px;
+}
+
 .card{
   background:white;
-  width:180px;
   border-radius:12px;
-  padding:12px;
-  border:1px solid #eee;
+  padding:10px;
   text-align:center;
-  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.card img{
+  width:100%;
+  height:140px;
+  object-fit:cover;
+  border-radius:10px;
 }
 
 .price{
@@ -30,5 +103,185 @@ header{
 
 .btn{
   background:#ff6a00;
+  color:white;
+  padding:8px;
+  border:none;
+  border-radius:10px;
+  margin-top:5px;
+  cursor:pointer;
+}
+
+/* CHECKOUT */
+.checkout{
+  background:white;
+  padding:15px;
+  margin:10px;
   border-radius:10px;
 }
+
+.checkout input, .checkout select{
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+  border-radius:8px;
+  border:1px solid #ddd;
+}
+
+.checkout button{
+  width:100%;
+  padding:12px;
+  background:#ff6a00;
+  color:white;
+  border:none;
+  border-radius:10px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:14px;
+  border-radius:50%;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>📱 MOBILE ZONE</header>
+
+<div class="search-box">
+<input type="text" id="search" onkeyup="searchProducts()" placeholder="Search products...">
+</div>
+
+<div class="nav">
+<span>Mobiles</span>
+<span>Laptops</span>
+<span>Accessories</span>
+<span>Smart Tech</span>
+</div>
+
+<div class="banner">
+<img src="https://images.unsplash.com/photo-1603898037225-1c7d1d6b8c2f?w=1200">
+</div>
+
+<div class="categories">
+<div>📱<br>Mobiles</div>
+<div>💻<br>Laptops</div>
+<div>🎧<br>Audio</div>
+<div>⌚<br>Smart</div>
+</div>
+
+<div class="cart">
+🛒 Items: <span id="cartCount">0</span>
+<p id="total"></p>
+</div>
+
+<div class="grid" id="productList"></div>
+
+<div class="checkout">
+<h3>Checkout</h3>
+<input id="name" placeholder="Name">
+<input id="phone" placeholder="Phone">
+<input id="address" placeholder="Address">
+
+<select id="payment">
+<option>Cash on Delivery</option>
+<option>Bank Transfer</option>
+</select>
+
+<button onclick="placeOrder()">Place Order</button>
+</div>
+
+<a class="whatsapp" href="https://wa.me/26879762802">💬</a>
+
+<script>
+
+const products = [
+  {name:"iPhone 13", price:10500, img:"https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500"},
+  {name:"Samsung S21", price:8900, img:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500"},
+  {name:"AirPods", price:1200, img:"https://images.unsplash.com/photo-1580910051074-3eb694886505?w=500"}
+];
+
+let cart = [];
+
+function renderProducts(){
+  let html = "";
+  products.forEach(p=>{
+    html += `
+    <div class="card">
+      <img src="${p.img}">
+      <h4>${p.name}</h4>
+      <p class="price">R ${p.price}</p>
+      <button class="btn" onclick="addToCart('${p.name}', ${p.price})">Add</button>
+    </div>`;
+  });
+  document.getElementById("productList").innerHTML = html;
+}
+
+function addToCart(name, price){
+  cart.push({name, price});
+  updateCart();
+}
+
+function updateCart(){
+  document.getElementById("cartCount").innerText = cart.length;
+
+  let total = cart.reduce((sum,i)=>sum+i.price,0);
+  document.getElementById("total").innerText = "Total: R " + total;
+}
+
+function searchProducts(){
+  let input = document.getElementById("search").value.toLowerCase();
+  let filtered = products.filter(p => p.name.toLowerCase().includes(input));
+
+  let html = "";
+  filtered.forEach(p=>{
+    html += `
+    <div class="card">
+      <img src="${p.img}">
+      <h4>${p.name}</h4>
+      <p class="price">R ${p.price}</p>
+      <button class="btn" onclick="addToCart('${p.name}', ${p.price})">Add</button>
+    </div>`;
+  });
+
+  document.getElementById("productList").innerHTML = html;
+}
+
+function placeOrder(){
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
+
+  if(!name || !phone || !address){
+    alert("Fill all fields");
+    return;
+  }
+
+  let total = cart.reduce((sum,i)=>sum+i.price,0);
+
+  let msg = "🛒 *ORDER*%0A";
+  msg += "Name: " + name + "%0A";
+  msg += "Phone: " + phone + "%0A";
+  msg += "Address: " + address + "%0A%0A";
+
+  cart.forEach(i=>{
+    msg += "- " + i.name + " (R " + i.price + ")%0A";
+  });
+
+  msg += "%0ATotal: R " + total;
+
+  window.open("https://wa.me/26879762802?text=" + msg);
+}
+
+renderProducts();
+
+</script>
+
+</body>
+</html>
