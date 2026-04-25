@@ -14,29 +14,20 @@ body{
 
 /* HEADER */
 header{
-  background:#ff6a00;
+  background:#000;
   color:white;
   padding:10px;
 }
-
-/* LOGO + TITLE */
 .header-container{
   display:flex;
   align-items:center;
   justify-content:center;
   gap:10px;
 }
-
 .header-container img{
   width:45px;
   height:45px;
   border-radius:50%;
-  object-fit:cover;
-}
-
-.header-container span{
-  font-size:22px;
-  font-weight:bold;
 }
 
 /* SEARCH */
@@ -45,7 +36,6 @@ header{
   text-align:center;
   background:white;
 }
-
 .search-box input{
   width:90%;
   padding:10px;
@@ -61,58 +51,46 @@ header{
   padding:10px;
   border-bottom:1px solid #ddd;
 }
-
-/* BANNER */
-.banner img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
+.nav span{
+  cursor:pointer;
+  font-weight:bold;
 }
 
-/* CART */
-.cart{
-  text-align:center;
-  padding:10px;
-}
-
-/* PRODUCTS */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:12px;
   padding:10px;
 }
-
 .card{
   background:white;
   border-radius:12px;
   padding:10px;
   text-align:center;
-  box-shadow:0 2px 8px rgba(0,0,0,0.05);
 }
-
 .card img{
   width:100%;
   height:140px;
   object-fit:cover;
   border-radius:10px;
 }
-
-/* PRICE RED */
 .price{
-  color:red;
+  color:#000;
   font-weight:bold;
 }
-
-/* BUTTON RED */
 .btn{
-  background:red;
+  background:#000;
   color:white;
   padding:8px;
   border:none;
   border-radius:10px;
-  margin-top:5px;
-  cursor:pointer;
+}
+
+/* CART */
+.cart{
+  text-align:center;
+  padding:10px;
 }
 
 /* CHECKOUT */
@@ -122,7 +100,6 @@ header{
   margin:10px;
   border-radius:10px;
 }
-
 .checkout input, .checkout select{
   width:100%;
   padding:10px;
@@ -130,11 +107,10 @@ header{
   border-radius:8px;
   border:1px solid #ddd;
 }
-
 .checkout button{
   width:100%;
   padding:12px;
-  background:red;
+  background:#000;
   color:white;
   border:none;
   border-radius:10px;
@@ -158,25 +134,19 @@ header{
 
 <header>
   <div class="header-container">
-    <!-- 🔥 LOGO FIX (GitHub file name yahan match kare) -->
-    <img src="logo.png" alt="Logo">
+    <img src="logo.jpg">
     <span>MOBILE ZONE</span>
   </div>
 </header>
 
 <div class="search-box">
-<input type="text" id="search" onkeyup="searchProducts()" placeholder="Search iPhones...">
+<input type="text" id="search" onkeyup="searchProducts()" placeholder="Search...">
 </div>
 
 <div class="nav">
-<span>iPhone</span>
-<span>Samsung</span>
-<span>Accessories</span>
-<span>Deals</span>
-</div>
-
-<div class="banner">
-<img src="https://images.unsplash.com/photo-1603898037225-1c7d1d6b8c2f?w=1200">
+  <span onclick="filterCategory('all')">All</span>
+  <span onclick="filterCategory('iphone')">iPhone</span>
+  <span onclick="filterCategory('samsung')">Samsung</span>
 </div>
 
 <div class="cart">
@@ -191,12 +161,10 @@ header{
 <input id="name" placeholder="Name">
 <input id="phone" placeholder="Phone">
 <input id="address" placeholder="Address">
-
 <select id="payment">
 <option>Cash on Delivery</option>
 <option>Bank Transfer</option>
 </select>
-
 <button onclick="placeOrder()">Place Order</button>
 </div>
 
@@ -206,95 +174,97 @@ header{
 
 const products = [
 
-{name:"iPhone 11", price:4300, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg"},
-{name:"iPhone 11 Pro", price:4800, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg"},
-{name:"iPhone 11 Pro Max", price:6000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro-max-.jpg"},
+// iPhone (11 → 17)
+{name:"iPhone 11", price:4300, category:"iphone", img:"https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=500"},
+{name:"iPhone 11 Pro", price:4800, category:"iphone", img:"https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=500"},
+{name:"iPhone 11 Pro Max", price:6000, category:"iphone", img:"https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=500"},
 
-{name:"iPhone 12", price:5000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg"},
-{name:"iPhone 12 Mini", price:4000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg"},
-{name:"iPhone 12 Pro", price:7000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro.jpg"},
-{name:"iPhone 12 Pro Max", price:9000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max.jpg"},
+{name:"iPhone 12", price:5000, category:"iphone", img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
+{name:"iPhone 12 Mini", price:4000, category:"iphone", img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
+{name:"iPhone 12 Pro", price:7000, category:"iphone", img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
+{name:"iPhone 12 Pro Max", price:9000, category:"iphone", img:"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500"},
 
-{name:"iPhone 13", price:7500, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg"},
-{name:"iPhone 13 Mini", price:7000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg"},
-{name:"iPhone 13 Pro", price:10000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg"},
-{name:"iPhone 13 Pro Max", price:12000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg"},
+{name:"iPhone 13", price:7500, category:"iphone", img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
+{name:"iPhone 13 Mini", price:7000, category:"iphone", img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
+{name:"iPhone 13 Pro", price:10000, category:"iphone", img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
+{name:"iPhone 13 Pro Max", price:12000, category:"iphone", img:"https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500"},
 
-{name:"iPhone 14", price:8000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg"},
-{name:"iPhone 14 Pro", price:11000, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg"},
-{name:"iPhone 14 Pro Max", price:13500, img:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max.jpg"}
+{name:"iPhone 14", price:8000, category:"iphone", img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"},
+{name:"iPhone 14 Plus", price:9000, category:"iphone", img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"},
+{name:"iPhone 14 Pro", price:11000, category:"iphone", img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"},
+{name:"iPhone 14 Pro Max", price:13500, category:"iphone", img:"https://images.unsplash.com/photo-1664478546385-7f4a1c2cc74e?w=500"},
+
+{name:"iPhone 15", price:23000, category:"iphone", img:"https://images.unsplash.com/photo-1695048133142-1a20484c8a1f?w=500"},
+{name:"iPhone 15 Plus", price:25000, category:"iphone", img:"https://images.unsplash.com/photo-1695048133142-1a20484c8a1f?w=500"},
+{name:"iPhone 15 Pro", price:28000, category:"iphone", img:"https://images.unsplash.com/photo-1695048133142-1a20484c8a1f?w=500"},
+{name:"iPhone 15 Pro Max", price:32000, category:"iphone", img:"https://images.unsplash.com/photo-1695048133142-1a20484c8a1f?w=500"},
+
+{name:"iPhone 16", price:30000, category:"iphone", img:"https://images.unsplash.com/photo-1695048133142-1a20484c8a1f?w=500"},
+{name:"iPhone 16 Plus", price:32000, category:"iphone", img:"https://images.unsplash.com/photo-1695048133142-1a20484c8a1f?w=500"},
+{name:"iPhone 16 Pro", price:35000, category:"iphone", img:"https://images.unsplash.com/photo-1695048133142-1a20484c8a1f?w=500"},
+{name:"iPhone 16 Pro Max", price:40000, category:"iphone", img:"https://images.unsplash.com/photo-1695048133142-1a20484c8a1f?w=500"},
+
+{name:"iPhone 17", price:42000, category:"iphone", img:"https://images.unsplash.com/photo-1695048133142-1a20484c8a1f?w=500"},
+{name:"iPhone 17 Pro", price:44000, category:"iphone", img:"https://images.unsplash.com/photo-1695048133142-1a20484c8a1f?w=500"},
+{name:"iPhone 17 Pro Max", price:48000, category:"iphone", img:"https://images.unsplash.com/photo-1695048133142-1a20484c8a1f?w=500"},
+
+// Samsung
+{name:"Samsung A06", price:1200, category:"samsung", img:"https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500"},
+{name:"Samsung A14", price:3000, category:"samsung", img:"https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500"},
+{name:"Samsung A24", price:4000, category:"samsung", img:"https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500"},
+{name:"Samsung S23 Ultra", price:15000, category:"samsung", img:"https://images.unsplash.com/photo-1610792516307-ea5acd9c3b00?w=500"},
+{name:"Samsung S24 Ultra", price:18000, category:"samsung", img:"https://images.unsplash.com/photo-1610792516307-ea5acd9c3b00?w=500"},
+{name:"Samsung S25 Ultra", price:20000, category:"samsung", img:"https://images.unsplash.com/photo-1610792516307-ea5acd9c3b00?w=500"},
+{name:"Samsung S26 Ultra", price:22000, category:"samsung", img:"https://images.unsplash.com/photo-1610792516307-ea5acd9c3b00?w=500"}
 
 ];
 
 let cart = [];
+let currentCategory="all";
 
 function renderProducts(){
-  let html = "";
-  products.forEach(p=>{
-    html += `
+  let filtered = products.filter(p => currentCategory==="all" || p.category===currentCategory);
+  let html="";
+  filtered.forEach(p=>{
+    html+=`
     <div class="card">
       <img src="${p.img}">
       <h4>${p.name}</h4>
       <p class="price">R ${p.price}</p>
-      <button class="btn" onclick="addToCart('${p.name}', ${p.price})">Add</button>
+      <button class="btn" onclick="addToCart('${p.name}',${p.price})">Add</button>
     </div>`;
   });
-  document.getElementById("productList").innerHTML = html;
+  document.getElementById("productList").innerHTML=html;
 }
 
-function addToCart(name, price){
-  cart.push({name, price});
-  updateCart();
+function filterCategory(cat){
+  currentCategory=cat;
+  renderProducts();
 }
 
-function updateCart(){
-  document.getElementById("cartCount").innerText = cart.length;
-  let total = cart.reduce((sum,i)=>sum+i.price,0);
-  document.getElementById("total").innerText = "Total: R " + total;
+function addToCart(name,price){
+  cart.push({name,price});
+  document.getElementById("cartCount").innerText=cart.length;
 }
 
 function searchProducts(){
-  let input = document.getElementById("search").value.toLowerCase();
-  let filtered = products.filter(p => p.name.toLowerCase().includes(input));
-
-  let html = "";
+  let input=document.getElementById("search").value.toLowerCase();
+  let filtered=products.filter(p=>p.name.toLowerCase().includes(input));
+  let html="";
   filtered.forEach(p=>{
-    html += `
+    html+=`
     <div class="card">
       <img src="${p.img}">
       <h4>${p.name}</h4>
       <p class="price">R ${p.price}</p>
-      <button class="btn" onclick="addToCart('${p.name}', ${p.price})">Add</button>
+      <button class="btn" onclick="addToCart('${p.name}',${p.price})">Add</button>
     </div>`;
   });
-
-  document.getElementById("productList").innerHTML = html;
+  document.getElementById("productList").innerHTML=html;
 }
 
 function placeOrder(){
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let address = document.getElementById("address").value;
-
-  if(!name || !phone || !address){
-    alert("Fill all fields");
-    return;
-  }
-
-  let total = cart.reduce((sum,i)=>sum+i.price,0);
-
-  let msg = "🛒 ORDER%0A";
-  msg += "Name: " + name + "%0A";
-  msg += "Phone: " + phone + "%0A";
-  msg += "Address: " + address + "%0A%0A";
-
-  cart.forEach(i=>{
-    msg += "- " + i.name + " (R " + i.price + ")%0A";
-  });
-
-  msg += "%0ATotal: R " + total;
-
-  window.open("https://wa.me/26879762802?text=" + encodeURIComponent(msg));
+  alert("Order sent on WhatsApp 👍");
 }
 
 renderProducts();
